@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>requestCode Generator</title>
+<script>
+// Simplified JavaScript function to simulate requestCode generation based on initcode.
+function generateRequestCode() {
+    var initcode = document.getElementById('initcode').value;
+    console.log("Input initcode:", initcode);
+    var requestCode;
+	  sc.config({
+						debug: true, // 是否开启调试模式,调用的所有 api 的返回值会在客户端 alert 出来
+                        appId: '6af5162f3b6245e7b8e692234e51c9bb', // 在统一 APP 开放平台服务器申请的 appId
+                        initCode,
+                        nativeApis: ['userAuth'] // 这里我们需要获取用户信息，需要申请 userAuth 权限，其他可选参数请参考《API文档》章节
+                    });
+                    sc.ready(() => {
+                        sc.userAuth({ appId: '6af5162f3b6245e7b8e692234e51c9bb' }, async (res) => {
+                            console.log('调用i深圳Api', res);
+                            if (res.code == 0) {
+                                requestCode = res.data.requestCode || '';
+                                console.log('当前获取到的requestCode', requestCode);
+                                //alert('获取到requestCode',requestCode);
+                       
+                            }
+                        });
+                    });
+    
+ 
+    document.getElementById('requestCode').value = requestCode;
+}
+</script>
+</head>
+<body>
+<h1>requestCode Generator</h1>
+<div>
+    <label for="initcode">Enter initcode:</label>
+    <input type="text" id="initcode" name="initcode">
+</div>
+<div>
+    <button onclick="generateRequestCode()">Generate requestCode</button>
+</div>
+<div>
+    <label for="requestCode">requestCode:</label>
+    <input type="text" id="requestCode" name="requestCode" readonly>
+</div>
+</body>
+</html>
