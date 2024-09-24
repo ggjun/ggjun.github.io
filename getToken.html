@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Token Request Form</title>
+<script>
+function submitForm() {
+    var url = document.getElementById('url').value;
+    var clientId = document.getElementById('clientId').value;
+    var clientSecret = document.getElementById('clientSecret').value;
+
+    // 如果字段为空，则使用默认值
+    if (!url) url = 'http://10.22.250.62:8888/zwbg-soa/rest/oauth2/token';
+    if (!clientId) clientId = 'ad015d60-9b28-4a27-b363-5866b930161c';
+    if (!clientSecret) clientSecret = 'ca4d1218-c041-4c12-b6a5-d8dd5fac47ba';
+
+    // 构建表单数据
+    var formData = new URLSearchParams();
+    formData.append('grant_type', 'client_credentials');
+    formData.append('client_id', clientId);
+    formData.append('client_secret', clientSecret);
+
+    // 发送POST请求
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+        },
+        body: formData.toString()
+    })
+    .then(response => response.text()) // 获取返回的文本
+    .then(data => {
+        // 显示返回的数据
+        document.getElementById('response').textContent = data;
+    })
+    .catch(error => {
+        // 显示错误信息
+        document.getElementById('response').textContent = 'Error: ' + error.message;
+    });
+}
+</script>
+</head>
+<body>
+<h1>API Token Request Form</h1>
+<form onsubmit="event.preventDefault(); submitForm();">
+    <label for="url">API URL:</label><br>
+    <input type="text" id="url" name="url" value="http://10.22.250.62:8888/zwbg-soa/rest/oauth2/token"><br>
+    <label for="clientId">Client ID:</label><br>
+    <input type="text" id="clientId" name="clientId" value="ad015d60-9b28-4a27-b363-5866b930161c"><br>
+    <label for="clientSecret">Client Secret:</label><br>
+    <input type="text" id="clientSecret" name="clientSecret" value="ca4d1218-c041-4c12-b6a5-d8dd5fac47ba"><br><br>
+    <input type="submit" value="Submit">
+</form>
+<h2>Response:</h2>
+<pre id="response"></pre>
+</body>
+</html>
