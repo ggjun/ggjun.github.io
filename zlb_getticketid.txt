@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浙里办 TicketId 获取工具</title>
+    <script src="//assets.zjzwfw.gov.cn/assets/ZWJSBridge/1.1.0/zwjsbridge.js"></script>
+</head>
+<body>
+    <h1>浙里办 TicketId 获取工具</h1>
+    <button id="scanButton">扫码获取TicketId</button>
+    <div id="ticketIdOutput">TicketId 将在这里显示</div>
+    <script>
+        document.getElementById('scanButton').addEventListener('click', function() {
+            ZWJSBridge.ssoTicket({}).then(function(ticket) {
+                if (ticket && ticket.result === true) {
+                    document.getElementById('ticketIdOutput').innerText = 'TicketId: ' + ticket.ticketId;
+                } else {
+                    document.getElementById('ticketIdOutput').innerText = '获取TicketId失败';
+                }
+            }).catch(function(error) {
+                document.getElementById('ticketIdOutput').innerText = '发生错误: ' + error;
+            });
+        });
+    </script>
+</body>
+</html>
