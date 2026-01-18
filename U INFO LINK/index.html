@@ -1,0 +1,1401 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>U INFO LINK CONSULTANT | 战略协同与合规出海</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #0f1b2a;
+      --ink-soft: #3a4c62;
+      --sand: #f5f1ea;
+      --mist: #eef4f1;
+      --line: rgba(15, 27, 42, 0.12);
+      --card: #ffffff;
+      --accent: #1d9a9b;
+      --accent-2: #f36a45;
+      --accent-3: #0f6fc6;
+      --accent-4: #e6b980;
+      --shadow: 0 18px 60px rgba(16, 32, 52, 0.16);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", "Noto Sans SC", sans-serif;
+      color: var(--ink);
+      background: radial-gradient(circle at 12% 10%, rgba(243, 106, 69, 0.18), transparent 52%),
+        radial-gradient(circle at 86% 12%, rgba(29, 154, 155, 0.2), transparent 45%),
+        radial-gradient(circle at 65% 85%, rgba(15, 111, 198, 0.14), transparent 50%),
+        linear-gradient(180deg, #fbf8f3 0%, #f1f4f3 55%, #f7f5f1 100%);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: linear-gradient(rgba(15, 27, 42, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 27, 42, 0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      opacity: 0.5;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.85), transparent 60%);
+      pointer-events: none;
+      z-index: -3;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1200px, 90vw);
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(14px);
+      background: rgba(251, 248, 243, 0.85);
+      border-bottom: 1px solid rgba(15, 27, 42, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      gap: 24px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: #fff;
+      padding: 4px;
+      box-shadow: 0 8px 20px rgba(16, 32, 52, 0.18);
+    }
+
+    .brand-text {
+      font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      color: var(--ink-soft);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 14px;
+      color: var(--ink-soft);
+    }
+
+    .nav-links a {
+      position: relative;
+      font-weight: 500;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      background: linear-gradient(120deg, var(--ink), #1b2a40);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      box-shadow: 0 12px 30px rgba(15, 27, 42, 0.24);
+    }
+
+    .lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px;
+      border-radius: 999px;
+      background: rgba(15, 27, 42, 0.08);
+      border: 1px solid rgba(15, 27, 42, 0.12);
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      color: var(--ink-soft);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .lang-btn.is-active {
+      background: #fff;
+      color: var(--ink);
+      box-shadow: 0 8px 18px rgba(16, 32, 52, 0.18);
+    }
+
+    .lang-btn:focus-visible {
+      outline: 2px solid var(--accent-3);
+      outline-offset: 2px;
+    }
+
+    .hero {
+      padding: 90px 0 120px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 20% 5% auto auto;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(243, 106, 69, 0.2), transparent 60%);
+      filter: blur(10px);
+      z-index: -1;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto auto 0 0;
+      width: 220px;
+      height: 220px;
+      border-radius: 24px;
+      background: linear-gradient(140deg, rgba(29, 154, 155, 0.18), transparent);
+      transform: translate(-20%, 30%) rotate(-8deg);
+      z-index: -1;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-3);
+      font-weight: 600;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 38px;
+      height: 2px;
+      background: var(--accent-3);
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
+      margin: 0 0 16px;
+    }
+
+    h1 {
+      font-size: clamp(36px, 4vw, 54px);
+      line-height: 1.1;
+    }
+
+    p {
+      margin: 0 0 18px;
+      color: var(--ink-soft);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 24px 0 28px;
+    }
+
+    .badge {
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(29, 154, 155, 0.12);
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 22px;
+      border-radius: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      border: 1px solid transparent;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .btn.primary {
+      background: linear-gradient(120deg, var(--accent), var(--accent-3));
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(15, 111, 198, 0.28);
+    }
+
+    .btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(15, 111, 198, 0.35);
+    }
+
+    .btn.ghost {
+      background: transparent;
+      border-color: var(--line);
+      color: var(--ink);
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .metric {
+      background: #fff;
+      border-radius: 16px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(16, 32, 52, 0.08);
+    }
+
+    .metric-number {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent-2);
+    }
+
+    .metric-label {
+      display: block;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-top: 8px;
+    }
+
+    .hero-visual {
+      position: relative;
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero-image {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow);
+      min-height: 460px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      outline: 1px solid rgba(15, 27, 42, 0.1);
+      animation: breathe 10s ease-in-out infinite;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.03);
+    }
+
+    .hero-image::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(15, 27, 42, 0.05), rgba(15, 27, 42, 0.3));
+      z-index: 1;
+    }
+
+    .hero-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, rgba(15, 27, 42, 0.1), rgba(15, 27, 42, 0.5));
+      z-index: 2;
+    }
+
+    .floating-card {
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      border: 1px solid rgba(15, 27, 42, 0.08);
+      box-shadow: 0 18px 40px rgba(15, 27, 42, 0.18);
+      transform: translateY(-24px);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .floating-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 1px solid rgba(243, 106, 69, 0.18);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .floating-card img {
+      width: 180px;
+      margin-bottom: 12px;
+    }
+
+    .section {
+      padding: 90px 0;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .section-head p {
+      max-width: 720px;
+    }
+
+    .logo-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 24px;
+      align-items: center;
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0.95), rgba(250, 248, 244, 0.9));
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(16, 32, 52, 0.08);
+    }
+
+    .logo-row img {
+      width: 100%;
+      height: 40px;
+      object-fit: contain;
+      filter: grayscale(1) contrast(0.9);
+      opacity: 0.7;
+      transition: 0.3s ease;
+    }
+
+    .logo-row img:hover {
+      filter: grayscale(0) contrast(1);
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .value-card {
+      background: #fff;
+      border-radius: var(--radius-md);
+      padding: 28px;
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(16, 32, 52, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .value-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      opacity: 0.6;
+    }
+
+    .value-card h3 {
+      margin-bottom: 12px;
+      font-size: 22px;
+    }
+
+    .value-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    .value-list li {
+      margin-bottom: 8px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .team-card {
+      background: #fff;
+      border-radius: var(--radius-md);
+      padding: 18px;
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(16, 32, 52, 0.08);
+      display: grid;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 3px;
+      background: linear-gradient(120deg, var(--accent-3), var(--accent-4));
+      opacity: 0.7;
+    }
+
+    .team-card img {
+      border-radius: 18px;
+      width: 100%;
+      height: 260px;
+      object-fit: contain;
+      background: #f2f4f5;
+      cursor: zoom-in;
+    }
+
+    .team-card h3 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .team-card p {
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .journey {
+      background: linear-gradient(135deg, rgba(29, 154, 155, 0.08), rgba(243, 106, 69, 0.12));
+      border-top: 1px solid rgba(15, 27, 42, 0.08);
+      border-bottom: 1px solid rgba(15, 27, 42, 0.08);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 20px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 18px;
+      align-items: center;
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px 24px;
+      border: 1px solid rgba(15, 27, 42, 0.08);
+      box-shadow: 0 12px 30px rgba(16, 32, 52, 0.08);
+    }
+
+    .step-index {
+      font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--accent-3);
+      text-align: center;
+      padding: 14px 0;
+      border-radius: 12px;
+      background: rgba(15, 111, 198, 0.12);
+    }
+
+    .step h3 {
+      margin: 0 0 8px;
+    }
+
+    .cta {
+      padding: 100px 0;
+    }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 32px;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(245, 241, 234, 0.85));
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 50px rgba(16, 32, 52, 0.12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-grid::before {
+      content: "";
+      position: absolute;
+      right: -60px;
+      top: -60px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(29, 154, 155, 0.25), transparent 65%);
+      opacity: 0.7;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 10px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-top: 24px;
+    }
+
+    .cta-card {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(244, 238, 228, 0.94));
+      border-radius: 22px;
+      padding: 28px;
+      border: 1px solid rgba(15, 27, 42, 0.12);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(16, 32, 52, 0.12);
+    }
+
+    .cta-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0% 0%, rgba(29, 154, 155, 0.22), transparent 45%),
+        radial-gradient(circle at 100% 100%, rgba(243, 106, 69, 0.2), transparent 50%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .cta-card > * {
+      position: relative;
+    }
+
+    .cta-card p {
+      margin: 0;
+    }
+
+    .cta-card-head {
+      margin-bottom: 18px;
+    }
+
+    .cta-card-head p {
+      color: var(--ink-soft);
+    }
+
+    .cta-steps {
+      display: grid;
+      gap: 14px;
+    }
+
+    .cta-step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(15, 27, 42, 0.08);
+    }
+
+    .cta-step-index {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent-3);
+      background: rgba(29, 154, 155, 0.15);
+    }
+
+    .cta-step-label {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .cta-step-note {
+      margin-top: 2px;
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+
+    .site-footer {
+      padding: 32px 0 50px;
+      color: var(--ink-soft);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .image-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 27, 42, 0.65);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 24px;
+      z-index: 50;
+    }
+
+    .image-modal.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .image-modal-content {
+      background: #fff;
+      border-radius: 20px;
+      padding: 18px;
+      position: relative;
+      max-width: min(860px, 92vw);
+      max-height: 90vh;
+      box-shadow: 0 24px 70px rgba(15, 27, 42, 0.35);
+    }
+
+    .image-modal img {
+      width: 100%;
+      height: auto;
+      max-height: 78vh;
+      object-fit: contain;
+      border-radius: 12px;
+      background: #f2f4f5;
+    }
+
+    .image-modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(15, 27, 42, 0.9);
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(-24px);
+      }
+      50% {
+        transform: translateY(-36px);
+      }
+      100% {
+        transform: translateY(-24px);
+      }
+    }
+
+    @keyframes breathe {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.015);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-actions {
+        gap: 12px;
+      }
+
+      .hero-grid,
+      .cta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .value-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 70px 0 90px;
+      }
+
+      .hero-image {
+        min-height: 360px;
+        animation: none;
+      }
+
+      .floating-card {
+        transform: translateY(-12px);
+        animation: none;
+      }
+
+      .team-card img {
+        height: 240px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        padding: 14px 0;
+      }
+
+      .brand img {
+        width: 42px;
+        height: 42px;
+      }
+
+      .hero-grid {
+        gap: 32px;
+      }
+
+      .hero-metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        grid-template-columns: 60px 1fr;
+      }
+
+      .logo-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding: 20px;
+      }
+
+      .cta-grid {
+        padding: 28px;
+      }
+
+      .image-modal-content {
+        padding: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <div class="brand">
+        <img src="images/logo.png" alt="U INFO LINK CONSULTANT" />
+        <div class="brand-text">U INFO LINK<span data-i18n="brand.tagline">价值直达</span></div>
+      </div>
+      <div class="nav-actions">
+        <nav class="nav-links">
+          <a href="#partners" data-i18n="nav.partners">战略合作伙伴</a>
+          <a href="#assets" data-i18n="nav.assets">价值闭环</a>
+          <a href="#leaders" data-i18n="nav.leaders">核心智囊</a>
+          <a href="#journey" data-i18n="nav.journey">战略路径</a>
+          <a class="nav-cta" href="#contact" data-i18n="nav.contact">咨询我们</a>
+        </nav>
+        <div class="lang-toggle" role="group" aria-label="Language switch">
+          <button class="lang-btn is-active" type="button" data-lang="zh">中</button>
+          <button class="lang-btn" type="button" data-lang="en">EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow" data-i18n="hero.eyebrow">定义出海的确定性</div>
+          <h1 data-i18n="hero.title">巴基斯坦数字金融皇冠上的“导航者”与战略共创伙伴</h1>
+          <p data-i18n="hero.desc">巴基斯坦正处于数字化变革的前夜。U INFO LINK 的使命是消除不确定性，提供直通巴基斯坦国家银行（SBP）与行业顶层资源的路径。</p>
+          <div class="hero-badges">
+            <span class="badge" data-i18n="hero.badge1">直达资源</span>
+            <span class="badge" data-i18n="hero.badge2">端到端</span>
+            <span class="badge" data-i18n="hero.badge3">合规优先</span>
+          </div>
+          <div class="cta-group">
+            <a class="btn primary" href="#contact" data-i18n="hero.cta1">预约战略咨询</a>
+            <a class="btn ghost" href="#assets" data-i18n="hero.cta2">查看价值闭环</a>
+          </div>
+          <div class="hero-metrics">
+            <div class="metric">
+              <span class="metric-number">6-12</span>
+              <span class="metric-label" data-i18n="hero.metric1">监管领先月数</span>
+            </div>
+            <div class="metric">
+              <span class="metric-number">50+</span>
+              <span class="metric-label" data-i18n="hero.metric2">金融科技经验年数</span>
+            </div>
+            <div class="metric">
+              <span class="metric-number">100%</span>
+              <span class="metric-label" data-i18n="hero.metric3">合规通过率</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual reveal" data-delay="120">
+          <div class="hero-image">
+            <img src="images/hero.jpg" alt="Pakistan fintech strategy" />
+          </div>
+          <div class="floating-card">
+            <img src="images/signature.png" alt="Signature" />
+            <p data-i18n="hero.quote">“将您的技术优势，转化为巴基斯坦的战略资产。”</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="partners" class="section partners">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 data-i18n="partners.title">战略合作伙伴</h2>
+          <p data-i18n="partners.desc">生态伙伴资源：国家级战略储备的含金量。我们的合作伙伴不仅是服务商，更是深度绑定的利益共同体。</p>
+        </div>
+        <div class="logo-row reveal" data-delay="120">
+          <img src="images/partner-pfn.png" alt="Pakistan Fintech Network" />
+          <img src="images/partner-finja.svg" alt="Finja" />
+          <img src="images/partner-raqami.png" alt="Raqami Digital Bank" />
+          <img src="images/partner-simpaisa.png" alt="Simpaisa" />
+        </div>
+      </div>
+    </section>
+
+    <section id="assets" class="section assets">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 data-i18n="assets.title">我们将为您构建的“四大核心资产”</h2>
+          <p data-i18n="assets.desc">U INFO LINK 通过国家级政商资源的深度嵌合，为企业在巴基斯坦构建从“准入”到“盈利汇回”的全闭环确定性路径。</p>
+        </div>
+        <div class="value-grid">
+          <div class="value-card reveal">
+            <h3 data-i18n="assets.card1.title">金融与特许行业准入</h3>
+            <ul class="value-list">
+              <li data-i18n="assets.card1.item1">PFN 官方身份与高层对话机制，消除审批黑箱。</li>
+              <li data-i18n="assets.card1.item2">覆盖 EMI、NBFC、Digital Bank、PSO/PSP 全系列牌照申请。</li>
+              <li data-i18n="assets.card1.item3">政策探索期获取监管沙盒或特区合规运营许可。</li>
+            </ul>
+          </div>
+          <div class="value-card reveal" data-delay="120">
+            <h3 data-i18n="assets.card2.title">极度合规架构与资产保护</h3>
+            <ul class="value-list">
+              <li data-i18n="assets.card2.item1">针对外汇管制设计合法利润回流路径。</li>
+              <li data-i18n="assets.card2.item2">军政级风险对冲与主权级安全护航。</li>
+              <li data-i18n="assets.card2.item3">深度匹配中巴税务协定，优化整体税负。</li>
+            </ul>
+          </div>
+          <div class="value-card reveal" data-delay="180">
+            <h3 data-i18n="assets.card3.title">本土化“交钥匙”交付</h3>
+            <ul class="value-list">
+              <li data-i18n="assets.card3.item1">猎聘懂监管与银行背景的本地 C-Level 团队。</li>
+              <li data-i18n="assets.card3.item2">打通 Raast、商业银行接口与电信大数据 API。</li>
+              <li data-i18n="assets.card3.item3">完成服务器本地化部署与场地安全护航。</li>
+            </ul>
+          </div>
+          <div class="value-card reveal" data-delay="240">
+            <h3 data-i18n="assets.card4.title">长期生态运营与增值</h3>
+            <ul class="value-list">
+              <li data-i18n="assets.card4.item1">季度审计、税务申报与监管关系维护服务。</li>
+              <li data-i18n="assets.card4.item2">对接本地家族财团与中东/南亚投资基金。</li>
+              <li data-i18n="assets.card4.item3">危机公关与政策突变的快速化解能力。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="leaders" class="section leaders">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 data-i18n="leaders.title">核心智囊团</h2>
+          <p data-i18n="leaders.desc">纵贯巴基斯坦军、政、商三界资源与监管背书，构成无可替代的顶层组合。</p>
+        </div>
+        <div class="team-grid">
+          <article class="team-card reveal">
+            <img class="js-zoom" src="images/leader-nadeem.png" alt="Nadeem Hussain" />
+            <h3>Nadeem Hussain</h3>
+            <p data-i18n="leaders.nadeem.desc">巴基斯坦数字金融“教父”，PFN 主席，央行与财政部核心咨询顾问。</p>
+          </article>
+          <article class="team-card reveal" data-delay="120">
+            <img class="js-zoom" src="images/leader-mark.png" alt="Mark Zhang" />
+            <h3>Mark Zhang</h3>
+            <p data-i18n="leaders.mark.desc">十年扎根巴基斯坦的实战操盘手，政策沟通与落地交付的关键通道。</p>
+          </article>
+          <article class="team-card reveal" data-delay="180">
+            <img class="js-zoom" src="images/leader-hassaan.png" alt="Hassaan Salahuddin" />
+            <h3>Hassaan Salahuddin</h3>
+            <p data-i18n="leaders.hassaan.desc">顶级法律矩阵领衔，常年稳居《钱伯斯亚太》第一梯队。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="journey" class="section journey">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 data-i18n="journey.title">制胜巴基斯坦的战略路径</h2>
+          <p data-i18n="journey.desc">从评估到长效合规，确保企业“进得去、站得住、出得来”。</p>
+        </div>
+        <div class="timeline">
+          <div class="step reveal">
+            <div class="step-index">01</div>
+            <div>
+              <h3 data-i18n="journey.step1.title">评估与架构</h3>
+              <p data-i18n="journey.step1.desc">业务可行性深度评估，设计符合监管标准的持股与税务架构。</p>
+            </div>
+          </div>
+          <div class="step reveal" data-delay="120">
+            <div class="step-index">02</div>
+            <div>
+              <h3 data-i18n="journey.step2.title">准入与获牌</h3>
+              <p data-i18n="journey.step2.desc">主体设立与金融牌照申请，主导监管答辩与公关沟通。</p>
+            </div>
+          </div>
+          <div class="step reveal" data-delay="180">
+            <div class="step-index">03</div>
+            <div>
+              <h3 data-i18n="journey.step3.title">交付与启动</h3>
+              <p data-i18n="journey.step3.desc">猎聘核心团队，配置办公空间与 IT 合规审计。</p>
+            </div>
+          </div>
+          <div class="step reveal" data-delay="240">
+            <div class="step-index">04</div>
+            <div>
+              <h3 data-i18n="journey.step4.title">长效合规</h3>
+              <p data-i18n="journey.step4.desc">季度审计、税务申报及常年监管关系维护。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section cta">
+      <div class="container cta-grid">
+        <div class="cta-copy reveal">
+          <h2 data-i18n="cta.title">我们的价值不只是告诉您流程，我们是直接为您打开那扇门。</h2>
+          <p data-i18n="cta.desc">进得去：解决牌照与准入。站得住：解决团队、安全与生态。出得来：解决利润合规汇回。</p>
+          <div class="contact-list">
+            <div data-i18n="contact.email">邮箱: info@uinfolink.space</div>
+            <div data-i18n="contact.wechat">微信: 17520490320</div>
+            <div data-i18n="contact.whatsapp">Whatsapp: +92 3123488881</div>
+          </div>
+        </div>
+        <div class="cta-card reveal" data-delay="120">
+          <div class="cta-card-head">
+            <h3 data-i18n="cta.pathTitle">咨询路径一览</h3>
+            <p data-i18n="cta.pathDesc">以四步节奏推进沟通，确保决策效率与落地执行同步。</p>
+          </div>
+          <div class="cta-steps">
+            <div class="cta-step">
+              <div class="cta-step-index">01</div>
+              <div>
+                <div class="cta-step-label" data-i18n="cta.step1.title">对接沟通</div>
+                <div class="cta-step-note" data-i18n="cta.step1.note">明确目标与关键约束条件</div>
+              </div>
+            </div>
+            <div class="cta-step">
+              <div class="cta-step-index">02</div>
+              <div>
+                <div class="cta-step-label" data-i18n="cta.step2.title">30 分钟诊断</div>
+                <div class="cta-step-note" data-i18n="cta.step2.note">快速识别合规与资源缺口</div>
+              </div>
+            </div>
+            <div class="cta-step">
+              <div class="cta-step-index">03</div>
+              <div>
+                <div class="cta-step-label" data-i18n="cta.step3.title">合规路径设计</div>
+                <div class="cta-step-note" data-i18n="cta.step3.note">形成清晰可执行的准入方案</div>
+              </div>
+            </div>
+            <div class="cta-step">
+              <div class="cta-step-index">04</div>
+              <div>
+                <div class="cta-step-label" data-i18n="cta.step4.title">落地执行</div>
+                <div class="cta-step-note" data-i18n="cta.step4.note">协同本地资源推进交付</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div data-i18n="footer.brand">U INFO LINK CONSULTANT</div>
+      <div data-i18n="footer.rights">© 2012-2026 保留所有权利</div>
+    </div>
+  </footer>
+
+  <div class="image-modal" id="imageModal" role="dialog" aria-hidden="true">
+    <div class="image-modal-content">
+      <button class="image-modal-close" type="button" aria-label="关闭">×</button>
+      <img src="" alt="" />
+    </div>
+  </div>
+
+  <script>
+    const elements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18 });
+
+    elements.forEach((el) => {
+      const delay = Number(el.dataset.delay || 0);
+      if (delay) {
+        el.style.transitionDelay = `${delay}ms`;
+      }
+      observer.observe(el);
+    });
+
+    const modal = document.getElementById('imageModal');
+    const modalImage = modal.querySelector('img');
+    const modalClose = modal.querySelector('.image-modal-close');
+
+    const openModal = (src, alt) => {
+      modalImage.src = src;
+      modalImage.alt = alt || '';
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeModal = () => {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      modalImage.src = '';
+      document.body.style.overflow = '';
+    };
+
+    document.querySelectorAll('.js-zoom').forEach((img) => {
+      img.addEventListener('click', () => {
+        openModal(img.dataset.full || img.src, img.alt);
+      });
+    });
+
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    modalClose.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+        closeModal();
+      }
+    });
+
+    const translations = {
+      zh: {
+        'meta.title': 'U INFO LINK CONSULTANT | 战略协同与合规出海',
+        'brand.tagline': '价值直达',
+        'nav.partners': '战略合作伙伴',
+        'nav.assets': '价值闭环',
+        'nav.leaders': '核心智囊',
+        'nav.journey': '战略路径',
+        'nav.contact': '咨询我们',
+        'hero.eyebrow': '定义出海的确定性',
+        'hero.title': '巴基斯坦数字金融皇冠上的“导航者”与战略共创伙伴',
+        'hero.desc': '巴基斯坦正处于数字化变革的前夜。U INFO LINK 的使命是消除不确定性，提供直通巴基斯坦国家银行（SBP）与行业顶层资源的路径。',
+        'hero.badge1': '直达资源',
+        'hero.badge2': '端到端',
+        'hero.badge3': '合规优先',
+        'hero.cta1': '预约战略咨询',
+        'hero.cta2': '查看价值闭环',
+        'hero.metric1': '监管领先月数',
+        'hero.metric2': '金融科技经验年数',
+        'hero.metric3': '合规通过率',
+        'hero.quote': '“将您的技术优势，转化为巴基斯坦的战略资产。”',
+        'partners.title': '战略合作伙伴',
+        'partners.desc': '生态伙伴资源：国家级战略储备的含金量。我们的合作伙伴不仅是服务商，更是深度绑定的利益共同体。',
+        'assets.title': '我们将为您构建的“四大核心资产”',
+        'assets.desc': 'U INFO LINK 通过国家级政商资源的深度嵌合，为企业在巴基斯坦构建从“准入”到“盈利汇回”的全闭环确定性路径。',
+        'assets.card1.title': '金融与特许行业准入',
+        'assets.card1.item1': 'PFN 官方身份与高层对话机制，消除审批黑箱。',
+        'assets.card1.item2': '覆盖 EMI、NBFC、Digital Bank、PSO/PSP 全系列牌照申请。',
+        'assets.card1.item3': '政策探索期获取监管沙盒或特区合规运营许可。',
+        'assets.card2.title': '极度合规架构与资产保护',
+        'assets.card2.item1': '针对外汇管制设计合法利润回流路径。',
+        'assets.card2.item2': '军政级风险对冲与主权级安全护航。',
+        'assets.card2.item3': '深度匹配中巴税务协定，优化整体税负。',
+        'assets.card3.title': '本土化“交钥匙”交付',
+        'assets.card3.item1': '猎聘懂监管与银行背景的本地 C-Level 团队。',
+        'assets.card3.item2': '打通 Raast、商业银行接口与电信大数据 API。',
+        'assets.card3.item3': '完成服务器本地化部署与场地安全护航。',
+        'assets.card4.title': '长期生态运营与增值',
+        'assets.card4.item1': '季度审计、税务申报与监管关系维护服务。',
+        'assets.card4.item2': '对接本地家族财团与中东/南亚投资基金。',
+        'assets.card4.item3': '危机公关与政策突变的快速化解能力。',
+        'leaders.title': '核心智囊团',
+        'leaders.desc': '纵贯巴基斯坦军、政、商三界资源与监管背书，构成无可替代的顶层组合。',
+        'leaders.nadeem.desc': '巴基斯坦数字金融“教父”，PFN 主席，央行与财政部核心咨询顾问。',
+        'leaders.mark.desc': '十年扎根巴基斯坦的实战操盘手，政策沟通与落地交付的关键通道。',
+        'leaders.hassaan.desc': '顶级法律矩阵领衔，常年稳居《钱伯斯亚太》第一梯队。',
+        'journey.title': '制胜巴基斯坦的战略路径',
+        'journey.desc': '从评估到长效合规，确保企业“进得去、站得住、出得来”。',
+        'journey.step1.title': '评估与架构',
+        'journey.step1.desc': '业务可行性深度评估，设计符合监管标准的持股与税务架构。',
+        'journey.step2.title': '准入与获牌',
+        'journey.step2.desc': '主体设立与金融牌照申请，主导监管答辩与公关沟通。',
+        'journey.step3.title': '交付与启动',
+        'journey.step3.desc': '猎聘核心团队，配置办公空间与 IT 合规审计。',
+        'journey.step4.title': '长效合规',
+        'journey.step4.desc': '季度审计、税务申报及常年监管关系维护。',
+        'cta.title': '我们的价值不只是告诉您流程，我们是直接为您打开那扇门。',
+        'cta.desc': '进得去：解决牌照与准入。站得住：解决团队、安全与生态。出得来：解决利润合规汇回。',
+        'contact.email': '邮箱: info@uinfolink.space',
+        'contact.wechat': '微信: 17520490320',
+        'contact.whatsapp': 'Whatsapp: +92 3123488881',
+        'cta.pathTitle': '咨询路径一览',
+        'cta.pathDesc': '以四步节奏推进沟通，确保决策效率与落地执行同步。',
+        'cta.step1.title': '对接沟通',
+        'cta.step1.note': '明确目标与关键约束条件',
+        'cta.step2.title': '30 分钟诊断',
+        'cta.step2.note': '快速识别合规与资源缺口',
+        'cta.step3.title': '合规路径设计',
+        'cta.step3.note': '形成清晰可执行的准入方案',
+        'cta.step4.title': '落地执行',
+        'cta.step4.note': '协同本地资源推进交付',
+        'footer.brand': 'U INFO LINK CONSULTANT',
+        'footer.rights': '© 2012-2026 保留所有权利'
+      },
+      en: {
+        'meta.title': 'U INFO LINK CONSULTANT | Strategic Coordination & Compliant Expansion',
+        'brand.tagline': 'We deliver results',
+        'nav.partners': 'Strategic Partners',
+        'nav.assets': 'Value Assets',
+        'nav.leaders': 'Core Advisors',
+        'nav.journey': 'Strategic Path',
+        'nav.contact': 'Consult Us',
+        'hero.eyebrow': 'Defining Overseas Certainty',
+        'hero.title': 'Navigator and co-creator for Pakistan\'s digital finance crown',
+        'hero.desc': 'Pakistan is on the eve of digital transformation. U INFO LINK removes uncertainty and provides a direct path to the State Bank of Pakistan (SBP) and top-tier industry resources.',
+        'hero.badge1': 'Direct Access',
+        'hero.badge2': 'End-to-End',
+        'hero.badge3': 'Compliance First',
+        'hero.cta1': 'Book Strategic Call',
+        'hero.cta2': 'View Value Assets',
+        'hero.metric1': 'Months Regulatory Lead',
+        'hero.metric2': 'Years Fintech Experience',
+        'hero.metric3': 'Compliance Track',
+        'hero.quote': '"Turn your technical edge into Pakistan\'s strategic asset."',
+        'partners.title': 'Strategic Partners',
+        'partners.desc': 'Ecosystem partners with national-level strategic value. Our partners are not just vendors - they are deeply aligned stakeholders.',
+        'assets.title': 'Four Core Assets We Build for You',
+        'assets.desc': 'U INFO LINK embeds national-level public and business resources to build a full-cycle path from market entry to compliant profit repatriation in Pakistan.',
+        'assets.card1.title': 'Financial & Licensed Entry',
+        'assets.card1.item1': 'PFN official status and executive dialogue to eliminate opaque approvals.',
+        'assets.card1.item2': 'End-to-end coverage for EMI, NBFC, Digital Bank, PSO/PSP licenses.',
+        'assets.card1.item3': 'Secure regulatory sandbox or special-zone permissions during policy pilots.',
+        'assets.card2.title': 'Full-Stack Compliance & Asset Protection',
+        'assets.card2.item1': 'Design legal profit repatriation under FX controls.',
+        'assets.card2.item2': 'Military/government-level risk hedging and sovereign-grade protection.',
+        'assets.card2.item3': 'Align with China-Pakistan tax treaties to optimize overall tax burden.',
+        'assets.card3.title': 'Localized Turnkey Delivery',
+        'assets.card3.item1': 'Recruit local C-level leaders with regulatory and banking backgrounds.',
+        'assets.card3.item2': 'Integrate Raast, bank interfaces, and telecom big-data APIs.',
+        'assets.card3.item3': 'Localize infrastructure deployment and secure facilities.',
+        'assets.card4.title': 'Long-term Ecosystem Operations',
+        'assets.card4.item1': 'Quarterly audits, tax filing, and regulator relationship maintenance.',
+        'assets.card4.item2': 'Connect with local family groups and Middle East/South Asia funds.',
+        'assets.card4.item3': 'Rapid crisis PR and mitigation for policy shifts.',
+        'leaders.title': 'Core Advisory Board',
+        'leaders.desc': 'A top-level combination spanning Pakistan\'s military, government, and business resources with regulatory endorsement.',
+        'leaders.nadeem.desc': 'Godfather of Pakistan\'s digital finance, PFN chair, and key advisor to the central bank and finance ministry.',
+        'leaders.mark.desc': 'A decade in Pakistan executing on the ground, key channel for policy dialogue and delivery.',
+        'leaders.hassaan.desc': 'Leads a premier legal matrix, consistently ranked in Chambers Asia Pacific.',
+        'journey.title': 'Strategic Path to Win in Pakistan',
+        'journey.desc': 'From assessment to sustained compliance, ensuring you can enter, stand firm, and exit profitably.',
+        'journey.step1.title': 'Assessment & Structure',
+        'journey.step1.desc': 'Deep feasibility assessment and ownership/tax structures aligned with regulators.',
+        'journey.step2.title': 'Entry & Licensing',
+        'journey.step2.desc': 'Entity setup and licensing, leading regulatory responses and communications.',
+        'journey.step3.title': 'Delivery & Launch',
+        'journey.step3.desc': 'Recruit core team, set up offices, and complete IT compliance audits.',
+        'journey.step4.title': 'Sustained Compliance',
+        'journey.step4.desc': 'Quarterly audits, tax filings, and year-round regulator relations.',
+        'cta.title': 'We do more than outline the process - we open the door for you.',
+        'cta.desc': 'Enter: resolve licensing and entry. Stand: build team, security, and ecosystem. Exit: compliant profit repatriation.',
+        'contact.email': 'Email: info@uinfolink.space',
+        'contact.wechat': 'Wechat: 17520490320',
+        'contact.whatsapp': 'Whatsapp: +92 3123488881',
+        'cta.pathTitle': 'Engagement Path',
+        'cta.pathDesc': 'A four-step cadence keeps decisions and execution in sync.',
+        'cta.step1.title': 'Alignment',
+        'cta.step1.note': 'Clarify goals and critical constraints',
+        'cta.step2.title': '30-min Diagnosis',
+        'cta.step2.note': 'Quickly locate compliance and resource gaps',
+        'cta.step3.title': 'Compliance Path Design',
+        'cta.step3.note': 'Deliver a clear, executable entry plan',
+        'cta.step4.title': 'Execution',
+        'cta.step4.note': 'Coordinate local resources to deliver',
+        'footer.brand': 'U INFO LINK CONSULTANT',
+        'footer.rights': '© 2012-2026 All Rights Reserved'
+      }
+    };
+
+    const applyLanguage = (lang) => {
+      const dict = translations[lang] || translations.zh;
+      document.documentElement.lang = lang === 'zh' ? 'zh-Hans' : 'en';
+      if (dict['meta.title']) {
+        document.title = dict['meta.title'];
+      }
+
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.dataset.i18n;
+        if (dict[key]) {
+          el.textContent = dict[key];
+        }
+      });
+
+      document.querySelectorAll('.lang-btn').forEach((btn) => {
+        btn.classList.toggle('is-active', btn.dataset.lang === lang);
+      });
+
+      localStorage.setItem('site-lang', lang);
+    };
+
+    const getDefaultLang = () => {
+      const saved = localStorage.getItem('site-lang');
+      if (saved && translations[saved]) {
+        return saved;
+      }
+      const browserLang = (navigator.language || '').toLowerCase();
+      return browserLang.startsWith('zh') ? 'zh' : 'en';
+    };
+
+    document.querySelectorAll('.lang-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        applyLanguage(btn.dataset.lang);
+      });
+    });
+
+    applyLanguage(getDefaultLang());
+  </script>
+</body>
+</html>
