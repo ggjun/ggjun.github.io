@@ -404,33 +404,6 @@
       z-index: 2;
     }
 
-    .floating-card {
-      background: rgba(255, 255, 255, 0.92);
-      border-radius: var(--radius-md);
-      padding: 20px 24px;
-      border: 1px solid rgba(15, 27, 42, 0.08);
-      box-shadow: 0 18px 40px rgba(15, 27, 42, 0.18);
-      transform: translateY(-24px);
-      backdrop-filter: blur(10px);
-      position: relative;
-      overflow: hidden;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .floating-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      border: 1px solid rgba(243, 106, 69, 0.18);
-      opacity: 0.7;
-      pointer-events: none;
-    }
-
-    .floating-card img {
-      width: 180px;
-      margin-bottom: 12px;
-    }
 
     .section {
       padding: 90px 0;
@@ -516,7 +489,7 @@
 
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 24px;
     }
 
@@ -527,6 +500,7 @@
       border: 1px solid var(--line);
       box-shadow: 0 12px 30px rgba(16, 32, 52, 0.08);
       display: grid;
+      grid-template-rows: 260px auto;
       gap: 16px;
       position: relative;
       overflow: hidden;
@@ -547,17 +521,183 @@
       height: 260px;
       object-fit: contain;
       background: #f2f4f5;
+    }
+
+    .team-card img.js-zoom {
       cursor: zoom-in;
+    }
+
+    .team-avatar {
+      border-radius: 18px;
+      width: 100%;
+      height: 260px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(140deg, rgba(29, 154, 155, 0.92), rgba(15, 111, 198, 0.9));
+      color: #fff;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .team-card-body {
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 10px;
+      align-items: start;
     }
 
     .team-card h3 {
       margin: 0;
       font-size: 20px;
+      min-height: 28px;
+      display: flex;
+      align-items: center;
     }
 
     .team-card p {
       font-size: 14px;
       margin: 0;
+      color: var(--ink-soft);
+    }
+
+    .team-role {
+      color: var(--ink);
+      font-weight: 600;
+      min-height: 40px;
+    }
+
+    .team-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--ink-soft);
+      line-height: 1.65;
+      font-size: 13px;
+    }
+
+    .team-list li {
+      margin-bottom: 8px;
+    }
+
+    .section-subhead {
+      display: grid;
+      gap: 10px;
+      margin: 46px 0 24px;
+    }
+
+    .section-subhead h3 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .section-subhead p {
+      margin: 0;
+      color: var(--ink-soft);
+      max-width: 720px;
+    }
+
+    .advisor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+    }
+
+    .advisor-card {
+      background: #fff;
+      border-radius: var(--radius-md);
+      padding: 18px;
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(16, 32, 52, 0.08);
+      display: grid;
+      grid-template-rows: 200px auto;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .advisor-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 3px;
+      background: linear-gradient(120deg, var(--accent-2), var(--accent-3));
+      opacity: 0.6;
+    }
+
+    .advisor-media {
+      width: 100%;
+      height: 200px;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #f2f4f5;
+      display: grid;
+      place-items: center;
+    }
+
+    .advisor-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .advisor-card img.js-zoom {
+      cursor: zoom-in;
+    }
+
+    .advisor-card h4 {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.4;
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+    }
+
+    .advisor-card-body {
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .advisor-avatar {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(243, 106, 69, 0.92), rgba(29, 154, 155, 0.9));
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+
+    .advisor-name {
+      margin: 0;
+      font-weight: 600;
+      color: var(--ink);
+      min-height: 24px;
+    }
+
+    .advisor-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--ink-soft);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .advisor-list li {
+      margin-bottom: 8px;
+    }
+
+    .advisor-placeholder {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 13px;
+      min-height: 24px;
     }
 
     .journey {
@@ -789,18 +929,6 @@
       cursor: pointer;
     }
 
-    @keyframes float {
-      0% {
-        transform: translateY(-24px);
-      }
-      50% {
-        transform: translateY(-36px);
-      }
-      100% {
-        transform: translateY(-24px);
-      }
-    }
-
     @keyframes breathe {
       0% {
         transform: scale(1);
@@ -844,13 +972,16 @@
         animation: none;
       }
 
-      .floating-card {
-        transform: translateY(-12px);
-        animation: none;
-      }
-
       .team-card img {
         height: 240px;
+      }
+
+      .team-avatar {
+        height: 240px;
+      }
+
+      .advisor-grid {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -909,7 +1040,8 @@
         <nav class="nav-links">
           <a href="#partners" data-i18n="nav.partners">战略合作伙伴</a>
           <a href="#assets" data-i18n="nav.assets">价值闭环</a>
-          <a href="#leaders" data-i18n="nav.leaders">核心智囊</a>
+          <a href="#leaders" data-i18n="nav.leaders">创始人</a>
+          <a href="#advisors" data-i18n="nav.advisors">顾问团队</a>
           <a href="#journey" data-i18n="nav.journey">战略路径</a>
           <a class="nav-cta" href="#contact" data-i18n="nav.contact">咨询我们</a>
         </nav>
@@ -926,8 +1058,8 @@
       <div class="container hero-grid">
         <div class="hero-copy reveal">
           <div class="eyebrow" data-i18n="hero.eyebrow">定义出海的确定性</div>
-          <h1 data-i18n="hero.title">巴基斯坦数字金融皇冠上的“导航者”与战略共创伙伴</h1>
-          <p data-i18n="hero.desc">巴基斯坦正处于数字化变革的前夜。U INFO LINK 的使命是消除不确定性，提供直通巴基斯坦国家银行（SBP）与行业顶层资源的路径。</p>
+          <h1 data-i18n="hero.title">我们知道您已经很优秀，但是顶级大佬带您更上一层楼</h1>
+          <p data-i18n="hero.desc">巴基斯坦正处于数字化变革的前夜，U INFO LINK 的使命是消除不确定性，提供直通巴基斯坦国家银行（SBP）、巴基斯坦证券交易委员会（SECP）、巴基斯坦通讯局（PTA）、巴基斯坦国家数据库与登记管理局（NADRA）与行业顶层资源的路径。</p>
           <div class="hero-badges">
             <span class="badge" data-i18n="hero.badge1">直达资源</span>
             <span class="badge" data-i18n="hero.badge2">端到端</span>
@@ -954,11 +1086,7 @@
         </div>
         <div class="hero-visual reveal" data-delay="120">
           <div class="hero-image">
-            <img src="images/hero.jpg" alt="Pakistan fintech strategy" />
-          </div>
-          <div class="floating-card">
-            <img src="images/signature.png" alt="Signature" />
-            <p data-i18n="hero.quote">“将您的技术优势，转化为巴基斯坦的战略资产。”</p>
+            <img src="images/hero-business.jpg" alt="Business team collaboration" />
           </div>
         </div>
       </div>
@@ -971,10 +1099,9 @@
           <p data-i18n="partners.desc">生态伙伴资源：国家级战略储备的含金量。我们的合作伙伴不仅是服务商，更是深度绑定的利益共同体。</p>
         </div>
         <div class="logo-row reveal" data-delay="120">
-          <img src="images/partner-pfn.png" alt="Pakistan Fintech Network" />
-          <img src="images/partner-finja.svg" alt="Finja" />
-          <img src="images/partner-raqami.png" alt="Raqami Digital Bank" />
-          <img src="images/partner-simpaisa.png" alt="Simpaisa" />
+          <img src="images/partner-logo-1.png" alt="合作伙伴标识 1" />
+          <img src="images/partner-logo-2.png" alt="合作伙伴标识 2" />
+          <img src="images/partner-logo-3.png" alt="合作伙伴标识 3" />
         </div>
       </div>
     </section>
@@ -987,35 +1114,38 @@
         </div>
         <div class="value-grid">
           <div class="value-card reveal">
-            <h3 data-i18n="assets.card1.title">金融与特许行业准入</h3>
+            <h3 data-i18n="assets.card1.title">金融与特许行业准入（牌照申请）</h3>
             <ul class="value-list">
-              <li data-i18n="assets.card1.item1">PFN 官方身份与高层对话机制，消除审批黑箱。</li>
-              <li data-i18n="assets.card1.item2">覆盖 EMI、NBFC、Digital Bank、PSO/PSP 全系列牌照申请。</li>
-              <li data-i18n="assets.card1.item3">政策探索期获取监管沙盒或特区合规运营许可。</li>
+              <li data-i18n="assets.card1.item1">依托（PFN）身份与高层对话机制，消除审批中的黑箱地带，确保“拿牌”的确定性。</li>
+              <li data-i18n="assets.card1.item2">全系金融牌照：涵盖 EMI（电子钱包）、NBFC（信贷）、Digital Bank（数字银行）、PSO/PSP（支付网关）、二级运营商（MVNO）、外呼中心（PSEB）、移动通讯（PTA CVAS）等全系列许可证的申领。</li>
+              <li data-i18n="assets.card1.item3">虚拟资产（VASP/Web3）准入：在政策探索期，协助企业获取“监管沙盒”试点名额或特区合规运营许可。</li>
+              <li data-i18n="assets.card1.item4">政府公关（GR）策略：代表企业与央行（SBP）、证监会（SECP）、通讯局（PTA）、国家数据库（NADRA）进行高层答辩，将中资技术优势翻译为当地监管认可的方案。</li>
             </ul>
           </div>
           <div class="value-card reveal" data-delay="120">
             <h3 data-i18n="assets.card2.title">极度合规架构与资产保护</h3>
             <ul class="value-list">
-              <li data-i18n="assets.card2.item1">针对外汇管制设计合法利润回流路径。</li>
-              <li data-i18n="assets.card2.item2">军政级风险对冲与主权级安全护航。</li>
-              <li data-i18n="assets.card2.item3">深度匹配中巴税务协定，优化整体税负。</li>
+              <li data-i18n="assets.card2.item1">解决巴基斯坦市场最核心的两个痛点：资产安全与利润回流。</li>
+              <li data-i18n="assets.card2.item2">利润合法回流闭环：针对外汇管制，设计基于技术授权、咨询费及红利分配的合法外汇结转路径，确保资金能够安全回笼。</li>
+              <li data-i18n="assets.card2.item3">“军政级”风险对冲：利用深厚的政商背景，为中资资产建立法律与主权双重防护。在政策剧烈波动或地方势力干扰时，为企业提供非对称的安全保护。</li>
+              <li data-i18n="assets.card2.item4">税务架构优化：深度匹配中巴双边税务协定，通过离岸与在岸的结构设计，实现整体税赋成本最小化。</li>
             </ul>
           </div>
           <div class="value-card reveal" data-delay="180">
             <h3 data-i18n="assets.card3.title">本土化“交钥匙”交付</h3>
             <ul class="value-list">
-              <li data-i18n="assets.card3.item1">猎聘懂监管与银行背景的本地 C-Level 团队。</li>
-              <li data-i18n="assets.card3.item2">打通 Raast、商业银行接口与电信大数据 API。</li>
-              <li data-i18n="assets.card3.item3">完成服务器本地化部署与场地安全护航。</li>
+              <li data-i18n="assets.card3.item1">提供标准化的落地执行，将“蓝图”转化为具备运营能力的实体。管理层猎聘：筛选并考核懂监管、有银行背景、且能与中国总部同频协作的本地高管团队（CEO、CFO、合规官等）。</li>
+              <li data-i18n="assets.card3.item2">底层资源导入：一站式打通巴基斯坦支付系统、本地助融资资金、国家数据库、征信机构、电信运营商 API。</li>
+              <li data-i18n="assets.card3.item3">物理资产安全：协助完成符合监管要求的服务器本地化部署、数据中心建设及办公场地的安全护航。</li>
             </ul>
           </div>
           <div class="value-card reveal" data-delay="240">
             <h3 data-i18n="assets.card4.title">长期生态运营与增值</h3>
             <ul class="value-list">
-              <li data-i18n="assets.card4.item1">季度审计、税务申报与监管关系维护服务。</li>
-              <li data-i18n="assets.card4.item2">对接本地家族财团与中东/南亚投资基金。</li>
-              <li data-i18n="assets.card4.item3">危机公关与政策突变的快速化解能力。</li>
+              <li data-i18n="assets.card4.item1">确保企业在当地不仅能“活下来”，更能“跑得快”。</li>
+              <li data-i18n="assets.card4.item2">常态化合规维护：提供定期的监管风险预警简报，代理年度审计申报，确保牌照状态始终健康。</li>
+              <li data-i18n="assets.card4.item3">本地赋能：协助企业对接巴基斯坦本地数据供应商、提供本地金融科技企业产品交叉销售，打通本地银行资金与资本市场融资。</li>
+              <li data-i18n="assets.card4.item4">危机公关：在面临政策突变、法律纠纷或舆论波动时，调动最高层级的行政资源进行危机化解。</li>
             </ul>
           </div>
         </div>
@@ -1025,24 +1155,111 @@
     <section id="leaders" class="section leaders">
       <div class="container">
         <div class="section-head reveal">
-          <h2 data-i18n="leaders.title">核心智囊团</h2>
-          <p data-i18n="leaders.desc">纵贯巴基斯坦军、政、商三界资源与监管背书，构成无可替代的顶层组合。</p>
+          <h2 data-i18n="leaders.title">公司创始人</h2>
+          <p data-i18n="leaders.desc">三位创始人构成从监管背书到落地交付的核心闭环。</p>
         </div>
         <div class="team-grid">
           <article class="team-card reveal">
             <img class="js-zoom" src="images/leader-nadeem.png" alt="Nadeem Hussain" />
-            <h3>Nadeem Hussain</h3>
-            <p data-i18n="leaders.nadeem.desc">巴基斯坦数字金融“教父”，PFN 主席，央行与财政部核心咨询顾问。</p>
+            <div class="team-card-body">
+              <h3>Nadeem Hussain</h3>
+              <p class="team-role" data-i18n="leaders.nadeem.role">巴基斯坦数字金融“教父”，监管层面的终极背书</p>
+              <ul class="team-list">
+                <li data-i18n="leaders.nadeem.point1">行业里程碑：拥有近 50 年全球金融从业经验。他是巴基斯坦最大、也是全球领先的数字钱包 Easypaisa 的缔造者。他亲手将一个小额信贷银行转型为估值数亿美金的数字金融平台。</li>
+                <li data-i18n="leaders.nadeem.point2">国家级影响力：现任巴基斯坦金融科技网络（PFN）主席，巴基斯坦即时支付系统 Raast 董事，巴基斯坦央行（SBP）前董事成员，是央行和财政部在制定数字银行框架时的核心决策咨询顾问。</li>
+                <li data-i18n="leaders.nadeem.point3">含金量体现：Nadeem Hussain 的名字在巴基斯坦就是“金融信誉”的代名词。</li>
+                <li data-i18n="leaders.nadeem.point4">他可以直接对话央行行长、证券交易委员会主席、通讯局局长、财政部长等及各大财团和银行领袖。对于中国企业而言，他的背书意味着您的项目在获取各类牌照时，将具备“信任优先权”。</li>
+              </ul>
+            </div>
           </article>
           <article class="team-card reveal" data-delay="120">
             <img class="js-zoom" src="images/leader-mark.png" alt="Mark Zhang" />
-            <h3>Mark Zhang</h3>
-            <p data-i18n="leaders.mark.desc">十年扎根巴基斯坦的实战操盘手，政策沟通与落地交付的关键通道。</p>
+            <div class="team-card-body">
+              <h3>Mark Zhang</h3>
+              <p class="team-role" data-i18n="leaders.mark.role">十年扎根的“实战将军”，本地化交付的可信出口</p>
+              <ul class="team-list">
+                <li data-i18n="leaders.mark.point1">本土化深度：十年如一日扎根巴基斯坦，是极少数能够完美跨越中巴商业文化鸿沟的顶尖专家。他曾作为核心管理成员，为多家大型金融科技公司在巴基斯坦从 0 到 1 建立完整运营体系。</li>
+                <li data-i18n="leaders.mark.point2">官方实权背书：现任巴基斯坦金融科技网络（PFN）官方中国顾问。他代表官方意志，负责将巴基斯坦国家级战略红利与中国顶尖技术进行精准匹配，是中巴数字金融领域政策沟通的实际操盘手之一。</li>
+                <li data-i18n="leaders.mark.point3">执行力闭环：他管理过数百人的本地团队，深谙巴基斯坦法律环境下的用工风险、外汇管制路径以及本地支付网关的“隐形规则”。</li>
+                <li data-i18n="leaders.mark.point4">含金量体现：他掌握着巴基斯坦最精准的金融科技高级人才库。他能在一月内为您组建起经得起合规审计的核心高管团队，确保“中国策略”在“巴基斯坦落地”时不走样、不踩坑。</li>
+              </ul>
+            </div>
           </article>
           <article class="team-card reveal" data-delay="180">
-            <img class="js-zoom" src="images/leader-hassaan.png" alt="Hassaan Salahuddin" />
-            <h3>Hassaan Salahuddin</h3>
-            <p data-i18n="leaders.hassaan.desc">顶级法律矩阵领衔，常年稳居《钱伯斯亚太》第一梯队。</p>
+            <img class="js-zoom" src="images/hero.jpg" alt="Watson Chen" />
+            <div class="team-card-body">
+              <h3>Watson Chen</h3>
+              <p class="team-role" data-i18n="leaders.watson.role">纵贯巴基斯坦军、政、商三界的资源总调度</p>
+              <ul class="team-list">
+                <li data-i18n="leaders.watson.point1">顶层权力枢纽：在巴基斯坦建立了一套直达总理府、军方高层及各部委首长的顶级人脉网络。在巴基斯坦，这种纵深关系是企业应对政策波动、确保资产安全及打破准入门槛的“终极护航”。</li>
+                <li data-i18n="leaders.watson.point2">官方实权背书：现任巴基斯坦金融科技网络（PFN）官方中国顾问。致力于带领更多中资科技金融企业在巴基斯坦做大做强。</li>
+                <li data-i18n="leaders.watson.point3">顶层架构专家：凭借金融与跨境贸易的深厚功底，他不仅是商业蓝图的绘制者，更是利润合法回流的架构师。他主导设计的合规模型，能确保企业在享受高增长的同时，最大化资本安全与税务效率。</li>
+                <li data-i18n="leaders.watson.point4">生态资源掌控者：深度掌握巴基斯坦电信数据接口、第三方支付清算、供应链金融等核心底层资源，能为合作伙伴直接导入增长所需的“基础设施”和“数据燃料”。</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+        <div id="advisors" class="section-subhead reveal" data-delay="240">
+          <h3 data-i18n="advisors.title">巴基斯坦顶级顾问团队</h3>
+          <p data-i18n="advisors.desc">在创始团队之下，顾问矩阵覆盖法律、财税与央行监管。</p>
+        </div>
+        <div class="advisor-grid">
+          <article class="advisor-card reveal">
+            <div class="advisor-media">
+              <img class="js-zoom" src="images/leader-hassaan.png" alt="Hassaan Salahuddin" />
+            </div>
+            <div class="advisor-card-body">
+              <h4 data-i18n="advisors.legal.title">顶级法律矩阵</h4>
+              <p class="advisor-name">Barrister Hassaan Salahuddin</p>
+              <ul class="advisor-list">
+                <li data-i18n="advisors.legal.point1">行业地位：由大律师哈桑·萨拉赫丁领衔，常年稳居《钱伯斯亚太榜单》（Chambers Asia-Pacific）第一级别（Band 1）。</li>
+                <li data-i18n="advisors.legal.point2">实战价值：他们不仅精通法律条文，更精通"监管语言"。他们能将中国企业的复杂持股架构合法地"翻译"成监管认可的方案，是处理准入难题的顶级"拆弹专家"。</li>
+              </ul>
+            </div>
+          </article>
+          <article class="advisor-card reveal" data-delay="120">
+            <div class="advisor-media">
+              <div class="advisor-avatar">TAX</div>
+            </div>
+            <div class="advisor-card-body">
+              <h4 data-i18n="advisors.tax.title">国际级财税顾问</h4>
+              <p class="advisor-name" data-i18n="advisors.tax.name">四大之一的会计事务所</p>
+              <ul class="advisor-list">
+                <li data-i18n="advisors.tax.point1">专业深度：巴基斯坦顶尖的税务与商业咨询机构，深谙中巴双边税务协定。</li>
+                <li data-i18n="advisors.tax.point2">关键角色：针对巴基斯坦外汇管制这一核心痛点，为 U INFO LINK 的客户设计最优的利润汇回路径，确保商业价值在跨境流动中最大化。</li>
+              </ul>
+            </div>
+          </article>
+          <article class="advisor-card reveal" data-delay="180">
+            <div class="advisor-media">
+              <div class="advisor-avatar">SBP</div>
+            </div>
+            <div class="advisor-card-body">
+              <h4 data-i18n="advisors.sbp.title">央行监管顾问</h4>
+              <p class="advisor-name">Syed Irfan Ali</p>
+              <ul class="advisor-list">
+                <li data-i18n="advisors.sbp.point1">由前巴基斯坦国家银行（SBP）执行董事，拥有 33 年横跨商业银行与中央银行监管的顶级履历，曾长期担任 SBP 银行监管、银行政策、支付系统、金融普惠及存款保护体系的核心决策者，是巴基斯坦金融监管体系的重要设计者之一。</li>
+                <li data-i18n="advisors.sbp.point2">精通 AML/CFT、银行准入、支付与外汇政策、数字银行、金融科技合规。在银行重组、牌照审批、金融机构并购与风险处置中，被视为真正能够解决"准入与合规难题"的终极级监管沟通专家。</li>
+              </ul>
+            </div>
+          </article>
+          <article class="advisor-card reveal" data-delay="240">
+            <div class="advisor-media">
+              <div class="advisor-avatar">FP</div>
+            </div>
+            <div class="advisor-card-body">
+              <h4 data-i18n="advisors.policy.title">金融政策顾问</h4>
+              <p class="advisor-placeholder" data-i18n="advisors.pending">信息待补充</p>
+            </div>
+          </article>
+          <article class="advisor-card reveal" data-delay="300">
+            <div class="advisor-media">
+              <div class="advisor-avatar">SEC</div>
+            </div>
+            <div class="advisor-card-body">
+              <h4 data-i18n="advisors.security.title">通讯安全专家</h4>
+              <p class="advisor-placeholder" data-i18n="advisors.pending">信息待补充</p>
+            </div>
           </article>
         </div>
       </div>
@@ -1216,12 +1433,13 @@
         'brand.tagline': '价值直达',
         'nav.partners': '战略合作伙伴',
         'nav.assets': '价值闭环',
-        'nav.leaders': '核心智囊',
+        'nav.leaders': '创始人',
+        'nav.advisors': '顾问团队',
         'nav.journey': '战略路径',
         'nav.contact': '咨询我们',
         'hero.eyebrow': '定义出海的确定性',
-        'hero.title': '巴基斯坦数字金融皇冠上的“导航者”与战略共创伙伴',
-        'hero.desc': '巴基斯坦正处于数字化变革的前夜。U INFO LINK 的使命是消除不确定性，提供直通巴基斯坦国家银行（SBP）与行业顶层资源的路径。',
+        'hero.title': '我们知道您已经很优秀，但是顶级大佬带您更上一层楼',
+        'hero.desc': '巴基斯坦正处于数字化变革的前夜，U INFO LINK 的使命是消除不确定性，提供直通巴基斯坦国家银行（SBP）、巴基斯坦证券交易委员会（SECP）、巴基斯坦通讯局（PTA）、巴基斯坦国家数据库与登记管理局（NADRA）与行业顶层资源的路径。',
         'hero.badge1': '直达资源',
         'hero.badge2': '端到端',
         'hero.badge3': '合规优先',
@@ -1235,27 +1453,57 @@
         'partners.desc': '生态伙伴资源：国家级战略储备的含金量。我们的合作伙伴不仅是服务商，更是深度绑定的利益共同体。',
         'assets.title': '我们将为您构建的“四大核心资产”',
         'assets.desc': 'U INFO LINK 通过国家级政商资源的深度嵌合，为企业在巴基斯坦构建从“准入”到“盈利汇回”的全闭环确定性路径。',
-        'assets.card1.title': '金融与特许行业准入',
-        'assets.card1.item1': 'PFN 官方身份与高层对话机制，消除审批黑箱。',
-        'assets.card1.item2': '覆盖 EMI、NBFC、Digital Bank、PSO/PSP 全系列牌照申请。',
-        'assets.card1.item3': '政策探索期获取监管沙盒或特区合规运营许可。',
+        'assets.card1.title': '金融与特许行业准入（牌照申请）',
+        'assets.card1.item1': '依托（PFN）身份与高层对话机制，消除审批中的黑箱地带，确保“拿牌”的确定性。',
+        'assets.card1.item2': '全系金融牌照：涵盖 EMI（电子钱包）、NBFC（信贷）、Digital Bank（数字银行）、PSO/PSP（支付网关）、二级运营商（MVNO）、外呼中心（PSEB）、移动通讯（PTA CVAS）等全系列许可证的申领。',
+        'assets.card1.item3': '虚拟资产（VASP/Web3）准入：在政策探索期，协助企业获取“监管沙盒”试点名额或特区合规运营许可。',
+        'assets.card1.item4': '政府公关（GR）策略：代表企业与央行（SBP）、证监会（SECP）、通讯局（PTA）、国家数据库（NADRA）进行高层答辩，将中资技术优势翻译为当地监管认可的方案。',
         'assets.card2.title': '极度合规架构与资产保护',
-        'assets.card2.item1': '针对外汇管制设计合法利润回流路径。',
-        'assets.card2.item2': '军政级风险对冲与主权级安全护航。',
-        'assets.card2.item3': '深度匹配中巴税务协定，优化整体税负。',
+        'assets.card2.item1': '解决巴基斯坦市场最核心的两个痛点：资产安全与利润回流。',
+        'assets.card2.item2': '利润合法回流闭环：针对外汇管制，设计基于技术授权、咨询费及红利分配的合法外汇结转路径，确保资金能够安全回笼。',
+        'assets.card2.item3': '“军政级”风险对冲：利用深厚的政商背景，为中资资产建立法律与主权双重防护。在政策剧烈波动或地方势力干扰时，为企业提供非对称的安全保护。',
+        'assets.card2.item4': '税务架构优化：深度匹配中巴双边税务协定，通过离岸与在岸的结构设计，实现整体税赋成本最小化。',
         'assets.card3.title': '本土化“交钥匙”交付',
-        'assets.card3.item1': '猎聘懂监管与银行背景的本地 C-Level 团队。',
-        'assets.card3.item2': '打通 Raast、商业银行接口与电信大数据 API。',
-        'assets.card3.item3': '完成服务器本地化部署与场地安全护航。',
+        'assets.card3.item1': '提供标准化的落地执行，将“蓝图”转化为具备运营能力的实体。管理层猎聘：筛选并考核懂监管、有银行背景、且能与中国总部同频协作的本地高管团队（CEO、CFO、合规官等）。',
+        'assets.card3.item2': '底层资源导入：一站式打通巴基斯坦支付系统、本地助融资资金、国家数据库、征信机构、电信运营商 API。',
+        'assets.card3.item3': '物理资产安全：协助完成符合监管要求的服务器本地化部署、数据中心建设及办公场地的安全护航。',
         'assets.card4.title': '长期生态运营与增值',
-        'assets.card4.item1': '季度审计、税务申报与监管关系维护服务。',
-        'assets.card4.item2': '对接本地家族财团与中东/南亚投资基金。',
-        'assets.card4.item3': '危机公关与政策突变的快速化解能力。',
-        'leaders.title': '核心智囊团',
-        'leaders.desc': '纵贯巴基斯坦军、政、商三界资源与监管背书，构成无可替代的顶层组合。',
-        'leaders.nadeem.desc': '巴基斯坦数字金融“教父”，PFN 主席，央行与财政部核心咨询顾问。',
-        'leaders.mark.desc': '十年扎根巴基斯坦的实战操盘手，政策沟通与落地交付的关键通道。',
-        'leaders.hassaan.desc': '顶级法律矩阵领衔，常年稳居《钱伯斯亚太》第一梯队。',
+        'assets.card4.item1': '确保企业在当地不仅能“活下来”，更能“跑得快”。',
+        'assets.card4.item2': '常态化合规维护：提供定期的监管风险预警简报，代理年度审计申报，确保牌照状态始终健康。',
+        'assets.card4.item3': '本地赋能：协助企业对接巴基斯坦本地数据供应商、提供本地金融科技企业产品交叉销售，打通本地银行资金与资本市场融资。',
+        'assets.card4.item4': '危机公关：在面临政策突变、法律纠纷或舆论波动时，调动最高层级的行政资源进行危机化解。',
+        'leaders.title': '公司创始人',
+        'leaders.desc': '三位创始人构成从监管背书到落地交付的核心闭环。',
+        'leaders.nadeem.role': '巴基斯坦数字金融“教父”，监管层面的终极背书',
+        'leaders.nadeem.point1': '行业里程碑：拥有近 50 年全球金融从业经验。他是巴基斯坦最大、也是全球领先的数字钱包 Easypaisa 的缔造者。他亲手将一个小额信贷银行转型为估值数亿美金的数字金融平台。',
+        'leaders.nadeem.point2': '国家级影响力：现任巴基斯坦金融科技网络（PFN）主席，巴基斯坦即时支付系统 Raast 董事，巴基斯坦央行（SBP）前董事成员，是央行和财政部在制定数字银行框架时的核心决策咨询顾问。',
+        'leaders.nadeem.point3': '含金量体现：Nadeem Hussain 的名字在巴基斯坦就是“金融信誉”的代名词。',
+        'leaders.nadeem.point4': '他可以直接对话央行行长、证券交易委员会主席、通讯局局长、财政部长等及各大财团和银行领袖。对于中国企业而言，他的背书意味着您的项目在获取各类牌照时，将具备“信任优先权”。',
+        'leaders.mark.role': '十年扎根的“实战将军”，本地化交付的可信出口',
+        'leaders.mark.point1': '本土化深度：十年如一日扎根巴基斯坦，是极少数能够完美跨越中巴商业文化鸿沟的顶尖专家。他曾作为核心管理成员，为多家大型金融科技公司在巴基斯坦从 0 到 1 建立完整运营体系。',
+        'leaders.mark.point2': '官方实权背书：现任巴基斯坦金融科技网络（PFN）官方中国顾问。他代表官方意志，负责将巴基斯坦国家级战略红利与中国顶尖技术进行精准匹配，是中巴数字金融领域政策沟通的实际操盘手之一。',
+        'leaders.mark.point3': '执行力闭环：他管理过数百人的本地团队，深谙巴基斯坦法律环境下的用工风险、外汇管制路径以及本地支付网关的“隐形规则”。',
+        'leaders.mark.point4': '含金量体现：他掌握着巴基斯坦最精准的金融科技高级人才库。他能在一月内为您组建起经得起合规审计的核心高管团队，确保“中国策略”在“巴基斯坦落地”时不走样、不踩坑。',
+        'leaders.watson.role': '纵贯巴基斯坦军、政、商三界的资源总调度',
+        'leaders.watson.point1': '顶层权力枢纽：在巴基斯坦建立了一套直达总理府、军方高层及各部委首长的顶级人脉网络。在巴基斯坦，这种纵深关系是企业应对政策波动、确保资产安全及打破准入门槛的“终极护航”。',
+        'leaders.watson.point2': '官方实权背书：现任巴基斯坦金融科技网络（PFN）官方中国顾问。致力于带领更多中资科技金融企业在巴基斯坦做大做强。',
+        'leaders.watson.point3': '顶层架构专家：凭借金融与跨境贸易的深厚功底，他不仅是商业蓝图的绘制者，更是利润合法回流的架构师。他主导设计的合规模型，能确保企业在享受高增长的同时，最大化资本安全与税务效率。',
+        'leaders.watson.point4': '生态资源掌控者：深度掌握巴基斯坦电信数据接口、第三方支付清算、供应链金融等核心底层资源，能为合作伙伴直接导入增长所需的“基础设施”和“数据燃料”。',
+        'advisors.title': '巴基斯坦顶级顾问团队',
+        'advisors.desc': '在创始团队之下，顾问矩阵覆盖法律、财税与央行监管。',
+        'advisors.legal.title': '顶级法律矩阵',
+        'advisors.legal.point1': '行业地位：由大律师哈桑·萨拉赫丁领衔，常年稳居《钱伯斯亚太榜单》（Chambers Asia-Pacific）第一级别（Band 1）。',
+        'advisors.legal.point2': '实战价值：他们不仅精通法律条文，更精通“监管语言”。他们能将中国企业的复杂持股架构合法地“翻译”成监管认可的方案，是处理准入难题的顶级“拆弹专家”。',
+        'advisors.tax.title': '国际级财税顾问',
+        'advisors.tax.name': '四大之一的会计事务所',
+        'advisors.tax.point1': '专业深度：巴基斯坦顶尖的税务与商业咨询机构，深谙中巴双边税务协定。',
+        'advisors.tax.point2': '关键角色：针对巴基斯坦外汇管制这一核心痛点，为 U INFO LINK 的客户设计最优的利润汇回路径，确保商业价值在跨境流动中最大化。',
+        'advisors.sbp.title': '央行监管顾问',
+        'advisors.sbp.point1': '由前巴基斯坦国家银行（SBP）执行董事，拥有 33 年横跨商业银行与中央银行监管的顶级履历，曾长期担任 SBP 银行监管、银行政策、支付系统、金融普惠及存款保护体系的核心决策者，是巴基斯坦金融监管体系的重要设计者之一。',
+        'advisors.sbp.point2': '精通 AML/CFT、银行准入、支付与外汇政策、数字银行、金融科技合规。在银行重组、牌照审批、金融机构并购与风险处置中，被视为真正能够解决“准入与合规难题”的终极级监管沟通专家。',
+        'advisors.policy.title': '金融政策顾问',
+        'advisors.security.title': '通讯安全专家',
+        'advisors.pending': '信息待补充',
         'journey.title': '制胜巴基斯坦的战略路径',
         'journey.desc': '从评估到长效合规，确保企业“进得去、站得住、出得来”。',
         'journey.step1.title': '评估与架构',
@@ -1289,12 +1537,13 @@
         'brand.tagline': 'We deliver results',
         'nav.partners': 'Strategic Partners',
         'nav.assets': 'Value Assets',
-        'nav.leaders': 'Core Advisors',
+        'nav.leaders': 'Founders',
+        'nav.advisors': 'Advisory Team',
         'nav.journey': 'Strategic Path',
         'nav.contact': 'Consult Us',
         'hero.eyebrow': 'Defining Overseas Certainty',
-        'hero.title': 'Navigator and co-creator for Pakistan\'s digital finance crown',
-        'hero.desc': 'Pakistan is on the eve of digital transformation. U INFO LINK removes uncertainty and provides a direct path to the State Bank of Pakistan (SBP) and top-tier industry resources.',
+        'hero.title': 'You are already exceptional, but top-tier leaders take you higher',
+        'hero.desc': 'Pakistan is on the eve of digital transformation. U INFO LINK removes uncertainty and provides a direct path to the State Bank of Pakistan (SBP), Securities and Exchange Commission of Pakistan (SECP), Pakistan Telecommunication Authority (PTA), and National Database and Registration Authority (NADRA), plus top-tier industry resources.',
         'hero.badge1': 'Direct Access',
         'hero.badge2': 'End-to-End',
         'hero.badge3': 'Compliance First',
@@ -1308,27 +1557,57 @@
         'partners.desc': 'Ecosystem partners with national-level strategic value. Our partners are not just vendors - they are deeply aligned stakeholders.',
         'assets.title': 'Four Core Assets We Build for You',
         'assets.desc': 'U INFO LINK embeds national-level public and business resources to build a full-cycle path from market entry to compliant profit repatriation in Pakistan.',
-        'assets.card1.title': 'Financial & Licensed Entry',
-        'assets.card1.item1': 'PFN official status and executive dialogue to eliminate opaque approvals.',
-        'assets.card1.item2': 'End-to-end coverage for EMI, NBFC, Digital Bank, PSO/PSP licenses.',
-        'assets.card1.item3': 'Secure regulatory sandbox or special-zone permissions during policy pilots.',
+        'assets.card1.title': 'Financial & Licensed Entry (Licensing)',
+        'assets.card1.item1': 'Leverage PFN status and executive dialogue to remove opaque approvals and secure licensing certainty.',
+        'assets.card1.item2': 'Full spectrum licenses: EMI (e-wallet), NBFC (credit), Digital Bank, PSO/PSP (payment gateways), MVNO, PSEB call centers, PTA CVAS, and more.',
+        'assets.card1.item3': 'Virtual asset (VASP/Web3) entry: secure regulatory sandbox slots or special-zone permits during policy pilots.',
+        'assets.card1.item4': 'Government relations (GR): represent you in high-level defense with SBP, SECP, PTA, and NADRA, translating Chinese tech strengths into regulator-approved plans.',
         'assets.card2.title': 'Full-Stack Compliance & Asset Protection',
-        'assets.card2.item1': 'Design legal profit repatriation under FX controls.',
-        'assets.card2.item2': 'Military/government-level risk hedging and sovereign-grade protection.',
-        'assets.card2.item3': 'Align with China-Pakistan tax treaties to optimize overall tax burden.',
+        'assets.card2.item1': 'Solve the two core Pakistan pain points: asset security and profit repatriation.',
+        'assets.card2.item2': 'Legal repatriation loop: design compliant FX pathways via licensing, consulting fees, and dividend distribution.',
+        'assets.card2.item3': 'Military/government-grade hedging: dual legal and sovereign protection against policy swings or local interference.',
+        'assets.card2.item4': 'Tax structure optimization: align with China-Pakistan tax treaties via offshore/onshore structuring to minimize total tax burden.',
         'assets.card3.title': 'Localized Turnkey Delivery',
-        'assets.card3.item1': 'Recruit local C-level leaders with regulatory and banking backgrounds.',
-        'assets.card3.item2': 'Integrate Raast, bank interfaces, and telecom big-data APIs.',
-        'assets.card3.item3': 'Localize infrastructure deployment and secure facilities.',
+        'assets.card3.item1': 'Standardized execution that turns the blueprint into an operating entity. Executive search: vet local C-level leaders (CEO, CFO, compliance) with regulatory and banking backgrounds aligned with HQ.',
+        'assets.card3.item2': 'Infrastructure intake: one-stop access to Pakistan payment rails, local financing, national databases, credit bureaus, and telecom APIs.',
+        'assets.card3.item3': 'Physical asset security: server localization, data center build-out, and compliant office security.',
         'assets.card4.title': 'Long-term Ecosystem Operations',
-        'assets.card4.item1': 'Quarterly audits, tax filing, and regulator relationship maintenance.',
-        'assets.card4.item2': 'Connect with local family groups and Middle East/South Asia funds.',
-        'assets.card4.item3': 'Rapid crisis PR and mitigation for policy shifts.',
-        'leaders.title': 'Core Advisory Board',
-        'leaders.desc': 'A top-level combination spanning Pakistan\'s military, government, and business resources with regulatory endorsement.',
-        'leaders.nadeem.desc': 'Godfather of Pakistan\'s digital finance, PFN chair, and key advisor to the central bank and finance ministry.',
-        'leaders.mark.desc': 'A decade in Pakistan executing on the ground, key channel for policy dialogue and delivery.',
-        'leaders.hassaan.desc': 'Leads a premier legal matrix, consistently ranked in Chambers Asia Pacific.',
+        'assets.card4.item1': 'Ensure you not only survive locally, but scale fast.',
+        'assets.card4.item2': 'Ongoing compliance: periodic regulatory risk briefings, annual audit filings, and license health maintenance.',
+        'assets.card4.item3': 'Local enablement: connect with data providers, fintech product cross-selling, and funding from local banks and capital markets.',
+        'assets.card4.item4': 'Crisis PR: mobilize top-tier administrative resources to resolve policy shifts, legal disputes, or public opinion shocks.',
+        'leaders.title': 'Founding Team',
+        'leaders.desc': 'Three founders form the core loop from regulatory endorsement to on-the-ground delivery.',
+        'leaders.nadeem.role': 'Godfather of Pakistan\'s digital finance, the ultimate regulatory endorsement.',
+        'leaders.nadeem.point1': 'Milestone experience: nearly 50 years in global finance. Creator of Easypaisa, Pakistan\'s largest and a globally leading digital wallet, turning a microfinance bank into a multi-hundred-million-dollar fintech platform.',
+        'leaders.nadeem.point2': 'National influence: chair of Pakistan Fintech Network (PFN), board member of Raast, former SBP board member, and core advisor to the central bank and finance ministry on the digital bank framework.',
+        'leaders.nadeem.point3': 'Signal value: the name Nadeem Hussain is synonymous with financial credibility in Pakistan.',
+        'leaders.nadeem.point4': 'He can directly engage the SBP governor, SECP chair, PTA head, finance minister, and major conglomerate and bank leaders. For Chinese enterprises, his endorsement grants a trust-first advantage in licensing.',
+        'leaders.mark.role': 'A decade-long on-the-ground commander, the trusted channel for localization delivery.',
+        'leaders.mark.point1': 'Localization depth: ten years embedded in Pakistan, one of the few experts who bridge China-Pakistan business culture. As a core executive, he built end-to-end operations from 0 to 1 for multiple major fintechs in Pakistan.',
+        'leaders.mark.point2': 'Official mandate: PFN official China advisor, matching Pakistan\'s national strategic dividends with China\'s top technology, and acting as a key operator in China-Pakistan digital finance policy coordination.',
+        'leaders.mark.point3': 'Execution loop: managed local teams of hundreds, deeply familiar with labor risk, FX controls, and payment gateway unwritten rules.',
+        'leaders.mark.point4': 'Signal value: he holds the most precise senior fintech talent pool in Pakistan, assembling audit-ready executive teams within a month to keep China strategy aligned with Pakistan delivery.',
+        'leaders.watson.role': 'Resource orchestrator across Pakistan\'s military, government, and business spheres.',
+        'leaders.watson.point1': 'Top-level power hub: built a network reaching the prime minister\'s office, military leadership, and ministries. In Pakistan, this depth is the ultimate safeguard against policy volatility, asset risks, and entry barriers.',
+        'leaders.watson.point2': 'Official mandate: PFN official China advisor, committed to scaling Chinese tech-finance firms in Pakistan.',
+        'leaders.watson.point3': 'Architecture expert: with deep finance and cross-border trade expertise, he designs compliant models that maximize capital safety and tax efficiency while enabling high growth.',
+        'leaders.watson.point4': 'Ecosystem control: deep access to telecom data interfaces, third-party payment clearing, and supply-chain finance resources, directly importing the infrastructure and data fuel needed for growth.',
+        'advisors.title': 'Top Advisory Board in Pakistan',
+        'advisors.desc': 'Under the founding team, the advisor matrix covers legal, tax, and central-bank regulation.',
+        'advisors.legal.title': 'Premier Legal Matrix',
+        'advisors.legal.point1': 'Standing: led by Barrister Hassaan Salahuddin, consistently ranked Band 1 in Chambers Asia-Pacific.',
+        'advisors.legal.point2': 'Practical value: experts in regulatory language, translating complex Chinese shareholding structures into regulator-approved plans to defuse entry challenges.',
+        'advisors.tax.title': 'International Tax & Finance Advisor',
+        'advisors.tax.name': 'One of the Big Four accounting firms',
+        'advisors.tax.point1': 'Depth: Pakistan\'s leading tax and business advisory institution, deeply versed in China-Pakistan tax treaties.',
+        'advisors.tax.point2': 'Role: design optimal profit repatriation paths under FX controls to maximize cross-border value.',
+        'advisors.sbp.title': 'Central Bank Regulatory Advisor',
+        'advisors.sbp.point1': 'Former SBP executive director with 33 years across commercial banking and central-bank supervision, a core architect of SBP banking supervision, policy, payment systems, financial inclusion, and deposit protection.',
+        'advisors.sbp.point2': 'Expertise in AML/CFT, bank entry, payments and FX policy, digital banking, fintech compliance; a top-tier regulator liaison for restructurings, licensing, M&A, and risk resolution.',
+        'advisors.policy.title': 'Financial Policy Advisor',
+        'advisors.security.title': 'Communications Security Expert',
+        'advisors.pending': 'Details to follow',
         'journey.title': 'Strategic Path to Win in Pakistan',
         'journey.desc': 'From assessment to sustained compliance, ensuring you can enter, stand firm, and exit profitably.',
         'journey.step1.title': 'Assessment & Structure',
